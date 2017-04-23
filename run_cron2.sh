@@ -1,0 +1,1 @@
+bash -c "cd /usr/bin/Rscript /home/krzysztof/GitHub/DataScienceWarsaw25/R/run_all.R"
