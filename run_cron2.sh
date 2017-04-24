@@ -1,1 +1,3 @@
-bash -c "cd /usr/bin/Rscript /home/krzysztof/GitHub/DataScienceWarsaw25/R/run_all.R"
+#!/bin/bash
+set -xv
+Rscript R/run_all_wp.R

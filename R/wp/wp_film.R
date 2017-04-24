@@ -1,3 +1,4 @@
+db <- dbConnect(drv = SQLite(), dbname = "data/wp.db")
 #### FILM ####
 adress <- "http://film.wp.pl/"
 adresses <- adress %>%
@@ -71,5 +72,5 @@ for (i in 1:nrow(wp_film)) {
                     wp_film$bodies[i], "')"))
 }
 
-# dbDisconnect(db)
+dbDisconnect(db)
 update_csv('wp_film')
