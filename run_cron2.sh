@@ -1,4 +1,5 @@
 #!/bin/bash
+
 set -xv
 cd home/marcin/trigeR5/
 Rscript R/run_all_wp.R
