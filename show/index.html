@@ -11,6 +11,44 @@
   <link rel="stylesheet" href="index_files/reveal.js-3.3.0.1/css/reveal.css"/>
 
 
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #303030; color: #cccccc; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #cccccc; background-color: #303030; }
+code > span.kw { color: #f0dfaf; } /* Keyword */
+code > span.dt { color: #dfdfbf; } /* DataType */
+code > span.dv { color: #dcdccc; } /* DecVal */
+code > span.bn { color: #dca3a3; } /* BaseN */
+code > span.fl { color: #c0bed1; } /* Float */
+code > span.ch { color: #dca3a3; } /* Char */
+code > span.st { color: #cc9393; } /* String */
+code > span.co { color: #7f9f7f; } /* Comment */
+code > span.ot { color: #efef8f; } /* Other */
+code > span.al { color: #ffcfaf; } /* Alert */
+code > span.fu { color: #efef8f; } /* Function */
+code > span.er { color: #c3bf9f; } /* Error */
+code > span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
+code > span.cn { color: #dca3a3; font-weight: bold; } /* Constant */
+code > span.sc { color: #dca3a3; } /* SpecialChar */
+code > span.vs { color: #cc9393; } /* VerbatimString */
+code > span.ss { color: #cc9393; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { } /* Variable */
+code > span.cf { color: #f0dfaf; } /* ControlFlow */
+code > span.op { color: #f0efd0; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #ffcfaf; font-weight: bold; } /* Preprocessor */
+code > span.at { } /* Attribute */
+code > span.do { color: #7f9f7f; } /* Documentation */
+code > span.an { color: #7f9f7f; font-weight: bold; } /* Annotation */
+code > span.cv { color: #7f9f7f; font-weight: bold; } /* CommentVar */
+code > span.in { color: #7f9f7f; font-weight: bold; } /* Information */
+</style>
 
 <link rel="stylesheet" href="index_files/reveal.js-3.3.0.1/css/theme/night.css" id="theme">
 
@@ -456,9 +494,9 @@ document.getElementsByTagName('head')[0].appendChild(style);
 
 <section>
     <h1 class="title"><br><small> <a href="https://github.com/rstudio/sparklyr">sparklyr</a>: R interface to <a href="http://spark.apache.org/">Apache Spark</a> machine learning algorithms with <a href="https://github.com/tidyverse/dplyr">dplyr</a> back-end </small></h1>
-  <h1 class="subtitle"><small> <br><a href="http://r-addict.com/About.html">Marcin Kosiński</a> </small></h1>
+  <h1 class="subtitle"><small> <br><a href="http://r-addict.com/About.html">Marcin Kosinski</a> </small></h1>
     <h2 class="author"><small><a href='https://r-addict.com'><i class='fa fa-comment'></i></a>  <a href='https://stackoverflow.com/users/3857701'><i class='fa fa-stack-overflow'></i></a>  <a href='https://github.com/MarcinKosinski'><i class='fa fa-github'></i></a>  <a href='mailto:m.p.kosinski@gmail.com'><i class='fa fa-envelope-o'></i></a>  </small><br></h2>
-    <h3 class="date">April 11, 2017 <br> <a href="https://www.meetup.com/Data-Science-Warsaw/events/238737897/">Data Science Warsaw 25</a></h3>
+    <h3 class="date">May 13, 2017 <br> <a href="https://www.meetup.com/Trojmiejska-Grupa-Entuzjastow-R/events/238671657/">meet(R) in TriCity 5</a></h3>
 </section>
 
 <section><section id="about-me" class="titleslide slide level1"><h1>About me</h1></section><section id="about-me-1" class="slide level2">
@@ -470,14 +508,394 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <h1>sparklyr = integRation</h1>
 <ul>
 <li><a href="http://spark.apache.org/">Apache Spark</a></li>
-<li><a href="https://cran.r-project.org/">R (data science) language</a></li>
-<li><a href="https://github.com/rstudio/sparkapi">sparkapi</a> R package</li>
-<li><a href="https://github.com/tidyverse/dplyr">dplyr</a> R package</li>
 <li><a href="http://spark.apache.org/mllib/">Spark MLlib</a> (machine learning library)</li>
-<li><a href="http://spark.rstudio.com">sparklyr</a>: dplyr back-end for Spark MLlib executed from R via sparkapi</li>
+<li><a href="https://cran.r-project.org/">R (data science) language</a></li>
+<li><a href="https://github.com/tidyverse/dplyr">dplyr</a> R package</li>
+<li><a href="http://spark.rstudio.com">sparklyr</a>: dplyr back-end for Spark MLlib executed from R</li>
 </ul>
 </section></section>
-<section><section id="thank-you-for-your-attention-questions" class="titleslide slide level1"><h1>Thank you for your attention Questions?</h1></section></section>
+<section><section id="apache-spark" class="titleslide slide level1"><h1>Apache Spark</h1></section><section id="spark---highlights" class="slide level2">
+<h1>Spark - highlights</h1>
+<p><a href="http://spark.apache.org/">spark.apache.org</a></p>
+<blockquote>
+<p>Apache Spark™ is a fast and general engine for large-scale data processing.</p>
+</blockquote>
+<blockquote>
+<p>Write applications quickly in Java, Scala, Python, R.</p>
+</blockquote>
+<pre><code>./bin/spark-shell --master local[N] # N - threads  / local
+./bin/pyspark     --master mesos://host:5050  # Mesos cluster
+./bin/sparkR      --master --master yarn --deploy-mode client</code></pre>
+<p><small> Unlike Spark <a href="http://spark.apache.org/docs/latest/spark-standalone.html">standalone</a> and <a href="http://spark.apache.org/docs/latest/running-on-mesos.html">Mesos</a> modes, in which the master’s address is specified in the <code>--master</code> parameter, in YARN mode the ResourceManager’s address is picked up from the Hadoop configuration. <br> Thus, the <code>--master</code> parameter is yarn. </small></p>
+</section><section id="spark---generality" class="slide level2">
+<h1>Spark - Generality</h1>
+<p><img src='spark1.PNG'></p>
+<p><small> Spark powers a stack of libraries including SQL and DataFrames, MLlib for machine learning, GraphX, and Spark Streaming. You can combine these libraries seamlessly in the same application. </small></p>
+<p>Modules built on Spark:</p>
+<ul>
+<li><a href="http://spark.apache.org/docs/latest/streaming-programming-guide.html">Spark Streaming</a>: processing real-time data streams</li>
+<li><a href="http://spark.apache.org/docs/latest/sql-programming-guide.html">Spark SQL, Datasets, and DataFrames</a>: support for structured data and relational queries</li>
+<li><a href="http://spark.apache.org/docs/latest/ml-guide.html">MLlib</a>: built-in machine learning library</li>
+<li><a href="http://spark.apache.org/docs/latest/graphx-programming-guide.html">GraphX</a>: Spark’s new API for graph processing</li>
+</ul>
+</section><section id="spark---runs-everywhere" class="slide level2">
+<h1>Spark - Runs Everywhere</h1>
+<blockquote>
+<p>You can run Spark using its <a href="http://spark.apache.org/docs/latest/spark-standalone.html">standalone cluster mode</a>, on <a href="http://spark.apache.org/docs/latest/ec2-scripts.html">EC2</a>, on <a href="http://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/index.html">Hadoop YARN</a>, or on <a href="http://mesos.apache.org/">Apache Mesos</a>. Access data in <a href="http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html">HDFS</a>, <a href="http://cassandra.apache.org/">Cassandra</a>, <a href="http://hbase.apache.org/">HBase</a>, <a href="http://hive.apache.org/">Hive</a>, <a href="http://tachyon-project.org/">Tachyon</a>, and any Hadoop data source.</p>
+</blockquote>
+<p><img src='spark2.PNG'></p>
+</section><section id="spark---where-to-go-from-here" class="slide level2">
+<h1>Spark - <a href="http://spark.apache.org/docs/latest/#where-to-go-from-here">Where to Go from Here?</a></h1>
+</section></section>
+<section><section id="spark-mllib" class="titleslide slide level1"><h1>Spark MLlib</h1></section><section id="machine-learning-library-mllib-guide" class="slide level2">
+<h1>Machine Learning Library (MLlib) <a href="http://spark.apache.org/docs/latest/ml-guide.html">Guide</a></h1>
+<p><small> MLlib is Spark’s machine learning (ML) library. Its goal is to make practical machine learning scalable and easy. At a high level, it provides tools such as:</p>
+<ul>
+<li>ML Algorithms: common learning algorithms such as classification, regression, clustering, and collaborative filtering</li>
+<li>Featurization: feature extraction, transformation, dimensionality reduction, and selection</li>
+<li>Pipelines: tools for constructing, evaluating, and tuning ML Pipelines</li>
+<li>Persistence: saving and load algorithms, models, and Pipelines</li>
+<li>Utilities: linear algebra, statistics, data handling, etc.</li>
+</ul>
+<p></small></p>
+</section><section id="mllib-can-be-accessed-with" class="slide level2">
+<h1>MLlib can be accessed with</h1>
+<p><img src='mllib1.PNG'> <img src='mllib2.PNG'></p>
+</section><section id="where-is-r" class="slide level2">
+<h1>Where is R?</h1>
+<p><a href="http://spark.apache.org/docs/latest/sparkr.html">SparkR (R on Spark)</a> - <a href="http://spark.apache.org/docs/latest/sparkr.html#machine-learning">Machine Learning</a></p>
+<p><small> SparkR supports the following machine learning algorithms currently:</p>
+<ul>
+<li><a href="http://spark.apache.org/docs/latest/api/R/spark.glm.html">spark.glm</a> or <a href="http://spark.apache.org/docs/latest/api/R/glm.html">glm</a>: Generalized Linear Model</li>
+<li><a href="http://spark.apache.org/docs/latest/api/R/spark.survreg.html">spark.survreg</a>: Accelerated Failure Time (AFT) Survival Regression Model</li>
+<li><a href="http://spark.apache.org/docs/latest/api/R/spark.naiveBayes.html">spark.naiveBayes</a>: Naive Bayes Model</li>
+<li><a href="http://spark.apache.org/docs/latest/api/R/spark.kmeans.html">spark.kmeans</a>: K-Means Model</li>
+<li><a href="http://spark.apache.org/docs/latest/api/R/spark.logit.html">spark.logit</a>: Logistic Regression Model</li>
+<li><a href="http://spark.apache.org/docs/latest/api/R/spark.isoreg.html">spark.isoreg</a>: Isotonic Regression Model</li>
+<li><a href="http://spark.apache.org/docs/latest/api/R/spark.gaussianMixture.html">spark.gaussianMixture</a>: Gaussian Mixture Model</li>
+<li><a href="http://spark.apache.org/docs/latest/api/R/spark.lda.html">spark.lda</a>: Latent Dirichlet Allocation (LDA) Model</li>
+<li><a href="http://spark.apache.org/docs/latest/api/R/spark.mlp.html">spark.mlp</a>: Multilayer Perceptron Classification Model</li>
+<li><a href="http://spark.apache.org/docs/latest/api/R/spark.gbt.html">spark.gbt</a>: Gradient Boosted Tree Model for Regression and Classification</li>
+<li><a href="http://spark.apache.org/docs/latest/api/R/spark.randomForest.html">spark.randomForest</a>: Random Forest Model for Regression and Classification</li>
+<li><a href="http://spark.apache.org/docs/latest/api/R/spark.als.html">spark.als</a>: Alternating Least Squares (ALS) matrix factorization Model</li>
+<li><a href="http://spark.apache.org/docs/latest/api/R/spark.kstest.html">spark.kstest</a>: Kolmogorov-Smirnov Test</li>
+</ul>
+<blockquote>
+<p>SparkR is not sparklyr. When I learned sparklyr, the SparkR provided only <code>glm</code>. </small></p>
+</blockquote>
+</section></section>
+<section><section id="r" class="titleslide slide level1"><h1>R</h1></section><section id="r-1" class="slide level2">
+<h1>R</h1>
+<blockquote>
+<p>Open source programming language and software environment for statistical computing and graphics.</p>
+</blockquote>
+<p>Language of Data Science</p>
+<p>Key tool in the statistician toolbox.</p>
+<ul>
+<li><a href="https://user2017.brussels/">useR ! 2017 04-07.07.2017</a></li>
+<li><a href="http://whyr.pl/">Why R? 2017 27-29.09.2017</a></li>
+</ul>
+</section><section id="learn-r" class="slide level2">
+<h1>Learn R</h1>
+<ul>
+<li><a href="https://www.meetup.com/Spotkania-Entuzjastow-R-Warsaw-R-Users-Group-Meetup/">Warsaw R Enthusiast Group</a></li>
+<li><a href="http://www.pogromcydanych.icm.edu.pl/">Data Crunchers / Pogromcy Danych</a> Massive Open Online Course</li>
+<li><a href="http://adv-r.had.co.nz/">Advanced R</a> by Hadley Wickham</li>
+<li><a href="http://r-pkgs.had.co.nz/">R packages</a> by Hadley Wickham</li>
+<li><a href="https://www.crcpress.com/Extending-R/Chambers/p/book/9781498775717">Extending R</a> by John M. Chambers</li>
+<li><a href="https://statweb.stanford.edu/~tibs/ElemStatLearn/">The Elements of Statistical Learning</a> by T. Hastie, R. Tibshiriani, J. Friedman</li>
+</ul>
+</section></section>
+<section><section id="dplyr" class="titleslide slide level1"><h1>dplyr</h1></section><section id="dplyr-a-grammar-of-data-manipulation" class="slide level2">
+<h1><a href="https://cran.r-project.org/web/packages/dplyr/index.html">dplyr</a>: <br> A Grammar of Data Manipulation</h1>
+<p><small> #1 R Top Package w/ <a href="https://www.rdocumentation.org/">113,363 monthly distinct downloads</a><img src="https://cranlogs.r-pkg.org/badges/grand-total/dplyr"><br> dplyr is designed to abstract over how the data is stored. </small></p>
+<ul>
+<li>Convenient pipe operator <code>%&gt;%</code> (also in the <a href="https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html">magrittr</a> package)</li>
+<li>Easy unified R interface to many (SQL like) databases</li>
+<li>Tidy functions for the most common data manipulations</li>
+</ul>
+<p><img src="dplyr.png" height='75px', width='65px'><br></p>
+<p><small> If you are new to dplyr, the best place to start is the <a href="http://r4ds.had.co.nz/transform.html">data import chapter</a> in R for data science. </small></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</code></pre></div>
+</section><section id="section" class="slide level2">
+<h1>%&gt;%</h1>
+<blockquote>
+<p>Pipe an object forward into a function or call expression.</p>
+</blockquote>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x %&gt;%<span class="st"> </span>f  ==<span class="st"> </span><span class="kw">f</span>(x)
+x %&gt;%<span class="st"> </span><span class="kw">f</span>(y) ==<span class="st"> </span><span class="kw">f</span>(x, y)
+x %&gt;%<span class="st"> </span><span class="kw">f</span>(y, <span class="dt">arg =</span> ., z) ==<span class="st"> </span><span class="kw">f</span>(y, <span class="dt">arg =</span> x, z)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">car_data &lt;-<span class="st"> </span>
+<span class="st">  </span>mtcars %&gt;%
+<span class="st">  </span><span class="kw">subset</span>(hp &gt;<span class="st"> </span><span class="dv">100</span>) %&gt;%
+<span class="st">  </span><span class="kw">aggregate</span>(. ~<span class="st"> </span>cyl, <span class="dt">data =</span> ., <span class="dt">FUN =</span> . %&gt;%<span class="st"> </span>mean %&gt;%<span class="st"> </span><span class="kw">round</span>(<span class="dv">2</span>)) %&gt;%
+<span class="st">  </span><span class="kw">transform</span>(<span class="dt">kpl =</span> mpg %&gt;%<span class="st"> </span><span class="kw">multiply_by</span>(<span class="fl">0.4251</span>)) %&gt;%
+<span class="st">  </span>print
+
+<span class="co"># A horrific alternative would be to write</span>
+
+car_data &lt;-<span class="st"> </span>
+<span class="st">  </span><span class="kw">transform</span>(<span class="kw">aggregate</span>(. ~<span class="st"> </span>cyl, 
+                      <span class="dt">data =</span> <span class="kw">subset</span>(mtcars, hp &gt;<span class="st"> </span><span class="dv">100</span>), 
+                      <span class="dt">FUN =</span> function(x) <span class="kw">round</span>(<span class="kw">mean</span>(x, <span class="dv">2</span>))), 
+            <span class="dt">kpl =</span> mpg*<span class="fl">0.4251</span>)</code></pre></div>
+<p>(source <a href="https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html">magrittr vignette</a>)</p>
+</section><section id="dplyr-tidy-functionalities-for-most-common-data-operations" class="slide level2">
+<h1>dplyr: tidy functionalities for most common data operations</h1>
+<p><small>dplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges:</small></p>
+<ul>
+<li><code>mutate()</code> adds new variables (functions of existing variables)</li>
+<li><code>select()</code> picks variables based on their names.</li>
+<li><code>filter()</code> picks cases based on their values.</li>
+<li><code>summarise()</code> reduces multiple values down to a single summary.</li>
+<li><code>arrange()</code> changes the ordering of the rows.</li>
+</ul>
+<p>(source <a href="https://github.com/tidyverse/dplyr/blob/master/README.md">dplyr README</a>)</p>
+</section><section id="dplyr-basic-example-1" class="slide level2">
+<h1>dplyr: basic example 1</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+starwars %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(species ==<span class="st"> &quot;Droid&quot;</span>) %&gt;%
+<span class="st">  </span><span class="kw">select</span>(name, mass, height, <span class="kw">ends_with</span>(<span class="st">&quot;color&quot;</span>)) %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(name, <span class="dt">bmi =</span> mass /<span class="st"> </span>((height /<span class="st"> </span><span class="dv">100</span>)  ^<span class="st"> </span><span class="dv">2</span>)) %&gt;%
+<span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(mass))</code></pre></div>
+<pre><code># A tibble: 5 × 7
+   name  mass height hair_color  skin_color eye_color      bmi
+  &lt;chr&gt; &lt;dbl&gt;  &lt;int&gt;      &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;
+1 IG-88   140    200       none       metal       red 35.00000
+2 C-3PO    75    167       &lt;NA&gt;        gold    yellow 26.89232
+3 R2-D2    32     96       &lt;NA&gt; white, blue       red 34.72222
+4 R5-D4    32     97       &lt;NA&gt;  white, red       red 34.00999
+5   BB8    NA     NA       none        none     black       NA</code></pre>
+</section><section id="dplyr-basic-example-2" class="slide level2">
+<h1>dplyr: basic example 2</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">starwars %&gt;%
+<span class="st">  </span><span class="kw">group_by</span>(species) %&gt;%
+<span class="st">  </span><span class="kw">summarise</span>(
+    <span class="dt">n =</span> <span class="kw">n</span>(),
+    <span class="dt">mass =</span> <span class="kw">mean</span>(mass, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
+  ) %&gt;%
+<span class="st">  </span><span class="kw">filter</span>(n &gt;<span class="st"> </span><span class="dv">1</span>)</code></pre></div>
+<pre><code># A tibble: 9 × 3
+   species     n      mass
+     &lt;chr&gt; &lt;int&gt;     &lt;dbl&gt;
+1    Droid     5  69.75000
+2   Gungan     3  74.00000
+3    Human    35  82.78182
+4 Kaminoan     2  88.00000
+5 Mirialan     2  53.10000
+6  Twi&#39;lek     2  55.00000
+7  Wookiee     2 124.00000
+8   Zabrak     2  80.00000
+9     &lt;NA&gt;     5  48.00000</code></pre>
+</section><section id="section-1" class="slide level2">
+<h1>_</h1>
+</section><section id="section-2" class="slide level2">
+<h1>_</h1>
+<p>Functions with <code>_</code> extension are used to work with characters.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">attr &lt;-<span class="st"> &quot;attribute_name&quot;</span>
+response &lt;-<span class="st"> &quot;response_name&quot;</span>
+<span class="co"># dplyr_characters &lt;- function(attr, response) {</span>
+df1 &lt;-<span class="st"> </span>df %&gt;%
+<span class="st">    </span><span class="kw">select_</span>(<span class="st">&quot;some_name&quot;</span>, attr, response) %&gt;%
+<span class="st">    </span><span class="kw">mutate_</span>(<span class="dt">.dots =</span> <span class="kw">setNames</span>(<span class="kw">list</span>(attr, attr)) %&gt;%
+<span class="st">    </span><span class="kw">rename_</span>(<span class="dt">.dots =</span> <span class="kw">setNames</span>(response, <span class="st">&quot;values&quot;</span>))
+<span class="co"># return(df1)</span>
+<span class="co"># }</span></code></pre></div>
+<p>This can be useful in the functions’ parametrization.</p>
+</section><section id="dplyr-databases-unified-interface" class="slide level2">
+<h1>dplyr: <a href="https://cran.r-project.org/web/packages/dplyr/vignettes/databases.html">databases unified interface</a></h1>
+<p><small> &gt; <code>src_sqlite()</code>, <code>src_mysql()</code>, <code>src_postgres()</code> and <code>src_bigquery()</code> are also supported by <code>dplyr</code> </small></p>
+<pre><code>[1] TRUE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(nycflights13)
+my_db &lt;-<span class="st"> </span><span class="kw">src_sqlite</span>(<span class="st">&quot;my_db.sqlite3&quot;</span>, <span class="dt">create =</span> T)
+flights_sqlite &lt;-<span class="st"> </span><span class="kw">copy_to</span>(my_db, flights, <span class="dt">temporary =</span> <span class="ot">FALSE</span>, <span class="dt">overwrite =</span> <span class="ot">TRUE</span>)
+<span class="co"># once the data is in the databse, it can be extracted with</span>
+flights_sqlite &lt;-<span class="st"> </span><span class="kw">tbl</span>(my_db, <span class="st">&quot;flights&quot;</span>) <span class="co"># OR</span>
+flights_sqlite &lt;-<span class="st"> </span><span class="kw">tbl</span>(my_db, <span class="kw">sql</span>(<span class="st">&quot;SELECT * FROM flights&quot;</span>))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">select</span>(flights_sqlite, year:day, dep_delay, arr_delay) %&gt;%
+<span class="st">  </span><span class="kw">filter</span>(dep_delay &gt;<span class="st"> </span><span class="dv">240</span>)</code></pre></div>
+<pre><code>Source:   query [?? x 5]
+Database: sqlite 3.11.1 [my_db.sqlite3]
+
+    year month   day dep_delay arr_delay
+   &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+1   2013     1     1       853       851
+2   2013     1     1       290       338
+3   2013     1     1       260       263
+4   2013     1     1       255       250
+5   2013     1     1       285       246
+6   2013     1     1       379       456
+7   2013     1     2       268       288
+8   2013     1     2       334       323
+9   2013     1     2       337       368
+10  2013     1     2       379       359
+# ... with more rows</code></pre>
+</section><section id="dplyr-databases-unified-interface---laziness" class="slide level2">
+<h1>dplyr: <a href="https://cran.r-project.org/web/packages/dplyr/vignettes/databases.html">databases unified interface</a> - laziness</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">c1 &lt;-<span class="st"> </span><span class="kw">filter</span>(flights_sqlite, year ==<span class="st"> </span><span class="dv">2013</span>, month ==<span class="st"> </span><span class="dv">1</span>, day ==<span class="st"> </span><span class="dv">1</span>)
+c2 &lt;-<span class="st"> </span><span class="kw">select</span>(c1, year, month, day, carrier, dep_delay, air_time, distance)
+c3 &lt;-<span class="st"> </span><span class="kw">mutate</span>(c2, <span class="dt">speed =</span> distance /<span class="st"> </span>air_time *<span class="st"> </span><span class="dv">60</span>)
+c4 &lt;-<span class="st"> </span><span class="kw">arrange</span>(c3, year, month, day, carrier)</code></pre></div>
+<p><small> Suprisingly, this sequence of operations never actually touches the database. <br>It’s not until you ask for the data (e.g. by printing <code>c4</code>) that dplyr generates the SQL and requests the results from the database.<br> Even then it only pulls down 10 rows. <br> To pull down all the results use <code>collect()</code> </small></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">explain</span>(c4) <span class="co"># c4$query does not longer works anymore</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SELECT <span class="st">`</span><span class="dt">year</span><span class="st">`</span>, <span class="st">`</span><span class="dt">month</span><span class="st">`</span>, <span class="st">`</span><span class="dt">day</span><span class="st">`</span>, <span class="st">`</span><span class="dt">carrier</span><span class="st">`</span>, <span class="st">`</span><span class="dt">dep_delay</span><span class="st">`</span>, <span class="st">`</span><span class="dt">air_time</span><span class="st">`</span>, <span class="st">`</span><span class="dt">distance</span><span class="st">`</span>, <span class="st">`</span><span class="dt">distance</span><span class="st">`</span> /<span class="st"> `</span><span class="dt">air_time</span><span class="st">`</span> *<span class="st"> </span><span class="fl">60.0</span> AS <span class="st">`</span><span class="dt">speed</span><span class="st">`</span>
+<span class="kw">FROM</span> (SELECT <span class="st">`</span><span class="dt">year</span><span class="st">`</span> AS <span class="st">`</span><span class="dt">year</span><span class="st">`</span>, <span class="st">`</span><span class="dt">month</span><span class="st">`</span> AS <span class="st">`</span><span class="dt">month</span><span class="st">`</span>, <span class="st">`</span><span class="dt">day</span><span class="st">`</span> AS <span class="st">`</span><span class="dt">day</span><span class="st">`</span>, <span class="st">`</span><span class="dt">carrier</span><span class="st">`</span> AS <span class="st">`</span><span class="dt">carrier</span><span class="st">`</span>, <span class="st">`</span><span class="dt">dep_delay</span><span class="st">`</span> AS <span class="st">`</span><span class="dt">dep_delay</span><span class="st">`</span>, <span class="st">`</span><span class="dt">air_time</span><span class="st">`</span> AS <span class="st">`</span><span class="dt">air_time</span><span class="st">`</span>, <span class="st">`</span><span class="dt">distance</span><span class="st">`</span> AS <span class="st">`</span><span class="dt">distance</span><span class="st">`</span>
+<span class="kw">FROM</span> (SELECT *
+FROM <span class="st">`</span><span class="dt">flights</span><span class="st">`</span>
+<span class="kw">WHERE</span> ((<span class="st">`</span><span class="dt">year</span><span class="st">`</span> =<span class="st"> </span><span class="fl">2013.0</span>) <span class="kw">AND</span> (<span class="st">`</span><span class="dt">month</span><span class="st">`</span> =<span class="st"> </span><span class="fl">1.0</span>) <span class="kw">AND</span> (<span class="st">`</span><span class="dt">day</span><span class="st">`</span> =<span class="st"> </span><span class="fl">1.0</span>))))
+ORDER BY <span class="st">`</span><span class="dt">year</span><span class="st">`</span>, <span class="st">`</span><span class="dt">month</span><span class="st">`</span>, <span class="st">`</span><span class="dt">day</span><span class="st">`</span>, <span class="st">`</span><span class="dt">carrier</span><span class="st">`</span>
+&lt;PLAN&gt;
+<span class="st">   </span>addr       opcode p1 p2 p3           p4 p5 comment
+<span class="dv">1</span>     <span class="dv">0</span>         Init  <span class="dv">0</span> <span class="dv">54</span>  <span class="dv">0</span>              <span class="dv">00</span>      <span class="ot">NA</span>
+<span class="dv">2</span>     <span class="dv">1</span>   SorterOpen  <span class="dv">4</span>  <span class="dv">9</span>  <span class="dv">0</span>       <span class="kw">k</span>(<span class="dv">1</span>,B) <span class="dv">00</span>      <span class="ot">NA</span>
+<span class="dv">3</span>     <span class="dv">2</span>     OpenRead  <span class="dv">3</span>  <span class="dv">2</span>  <span class="dv">0</span>           <span class="dv">19</span> <span class="dv">00</span>      <span class="ot">NA</span>
+<span class="dv">4</span>     <span class="dv">3</span>       Rewind  <span class="dv">3</span> <span class="dv">35</span>  <span class="dv">0</span>              <span class="dv">00</span>      <span class="ot">NA</span>
+<span class="dv">5</span>     <span class="dv">4</span>       Column  <span class="dv">3</span>  <span class="dv">0</span>  <span class="dv">1</span>              <span class="dv">00</span>      <span class="ot">NA</span>
+<span class="dv">6</span>     <span class="dv">5</span>           Ne  <span class="dv">2</span> <span class="dv">34</span>  <span class="dv">1</span>     (BINARY) <span class="dv">54</span>      <span class="ot">NA</span></code></pre></div>
+</section><section id="dplyr---one-need-to-know" class="slide level2">
+<h1>dplyr - one need to know</h1>
+<p>Code example - <a href="http://stackoverflow.com/questions/39231807/cant-gather-tibble-in-r"><i class='fa fa-stack-overflow'></i> Can’t gather tibble in R (anymore)</a></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyr) <span class="co"># dplyr 0.4.2</span>
+iris %&gt;%
+<span class="st">  </span><span class="kw">select</span>(-Sepal.Width) %&gt;%
+<span class="st">  </span>tidyr::<span class="kw">gather</span>(Species) %&gt;%<span class="st"> </span>head
+  Species      Species value
+<span class="dv">1</span>  setosa Sepal.Length   <span class="fl">5.1</span>
+<span class="dv">2</span>  setosa Sepal.Length   <span class="fl">4.9</span>
+<span class="dv">3</span>  setosa Sepal.Length   <span class="fl">4.7</span>
+<span class="dv">4</span>  setosa Sepal.Length   <span class="fl">4.6</span>
+<span class="dv">5</span>  setosa Sepal.Length   <span class="fl">5.0</span>
+<span class="dv">6</span>  setosa Sepal.Length   <span class="fl">5.4</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyr) <span class="co"># dplyr 0.4.3</span>
+<span class="co"># the same code</span>
+Error:<span class="st"> </span>Each variable must have a unique name.
+Problem variables:<span class="st"> &#39;Species&#39;</span></code></pre></div>
+<p><small> dplyr authors tends to develop the package without looking at backward compatibility. </small></p>
+</section></section>
+<section><section id="sparklyr" class="titleslide slide level1"><h1>sparklyr</h1></section><section id="sparklyr---integration" class="slide level2">
+<h1>sparklyr - integRation</h1>
+<p><img src="sparklyr.png"></p>
+<ul>
+<li>dplyr language/syntax/pipes</li>
+<li>Spark computational power</li>
+<li>Spark ML algorithms</li>
+</ul>
+<p>All from R/RStudio.</p>
+</section><section id="sparklyr---about-ml-integration" class="slide level2">
+<h1>sparklyr - about ML integRation</h1>
+<blockquote>
+<p>Thought about learnig Scala? Leave it - use sparklyr!</p>
+</blockquote>
+<p><small> <strong>sparklyr</strong> provides bindings to Spark’s distributed <a href="https://spark.apache.org/docs/latest/mllib-guide.html">machine learning</a> library. In particular, sparklyr allows you to access the machine learning routines provided by the <a href="https://spark.apache.org/docs/latest/ml-guide.html">spark.ml</a> package. Together with sparklyr’s <a href="http://spark.rstudio.com/dplyr.html">dplyr</a> interface, you can easily create and tune machine learning workflows on Spark, orchestrated entirely within R. </small></p>
+<p>sparklyr provides three families of functions that you can use with Spark machine learning:</p>
+<ul>
+<li>Machine learning algorithms for analyzing data (<code>ml_*</code>)</li>
+<li>Feature transformers for manipulating individual features (<code>ft_*</code>)</li>
+<li>Functions for manipulating Spark DataFrames (<code>sdf_*</code>)</li>
+</ul>
+<p>(source <a href="http://spark.rstudio.com/mllib.html">sparklyr webpage</a>)</p>
+</section><section id="sparklyr---setting-up" class="slide level2">
+<h1>sparklyr - setting up</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># use 1) or 2) to install sparklyr</span>
+<span class="co"># 1) library(devtools);install_github(&#39;rstudio/sparklyr&#39;) - development verion</span>
+<span class="co"># 2) install.packages(&#39;CRAN&#39;) - release version</span>
+<span class="kw">library</span>(sparklyr)
+<span class="kw">spark_install</span>(<span class="dt">version =</span> <span class="st">&quot;2.0.0&quot;</span>)
+sc &lt;-<span class="st"> </span><span class="kw">spark_connect</span>(<span class="dt">master=</span><span class="st">&quot;local&quot;</span>) <span class="co"># local mode</span></code></pre></div>
+</section><section id="connection-to-yarn" class="slide level2">
+<h1>Connection to <a href="https://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-site/YARN.html">YARN</a></h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sc &lt;-<span class="st"> </span>
+<span class="kw">spark_connect</span>(<span class="dt">master=</span><span class="st">&quot;yarn&quot;</span>,
+   <span class="dt">config =</span> <span class="kw">list</span>(
+     <span class="dt">default =</span> <span class="kw">list</span>(
+       <span class="dt">spark.submit.deployMode  =</span> <span class="st">&quot;client&quot;</span>,
+       <span class="dt">spark.executor.instances =</span> <span class="dv">20</span>, 
+       <span class="dt">spark.executor.memory    =</span> <span class="st">&quot;2G&quot;</span>,
+       <span class="dt">spark.executor.cores     =</span> <span class="dv">4</span>,
+       <span class="dt">spark.driver.memory      =</span> <span class="st">&quot;4G&quot;</span>)))</code></pre></div>
+<p><small> One don’t have to specify config by himself. Specify parameters for Spark application with <a href="http://spark.rstudio.com/deployment.html#configuration">config.yml</a> files so that you can benefit from many profiles (development, production).</p>
+<p>In version 2.0.0 it is desired to name master <code>yarn</code> instead of <code>yarn-client</code> and passing the <code>deployMode</code> parameter, which is different from version 1.6.x.</p>
+<p>All available parameters can be found in <a href="http://spark.apache.org/docs/latest/running-on-yarn.html">Running Spark on YARN</a> documentation page. </small></p>
+</section><section id="dplyr-and-dbi-interface-on-spark" class="slide level2">
+<h1>dplyr and DBI interface on Spark</h1>
+<p><small> When connecting to YARN, it is most probable that you would like to use data tables that are stored on Hive. Remember that</p>
+<blockquote>
+<p>Configuration of Hive is done by placing your hive-site.xml, core-site.xml (for security configuration), and hdfs-site.xml (for HDFS configuration) file in conf/.</p>
+</blockquote>
+<p>where <code>conf/</code> is set as <code>HADOOP_CONF_DIR</code>. Read more about using <a href="http://spark.apache.org/docs/latest/sql-programming-guide.html#hive-tables">Hive tables from Spark</a> </small></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris_tbl &lt;-<span class="st"> </span><span class="kw">copy_to</span>(sc, iris, <span class="st">&quot;iris&quot;</span>) <span class="co"># sc is a spark_connection</span>
+iris_tbl %&gt;%
+<span class="st">   </span><span class="kw">select</span>(Petal_Length, Petal_Width) %&gt;%
+<span class="st">   </span><span class="kw">top_n</span>(<span class="dv">40</span>, Petal_Width) %&gt;%
+<span class="st">   </span><span class="kw">arrange</span>(Petal_Length)</code></pre></div>
+<p><small> <code>sparklyr</code> package also provides interface for functions defined in <code>DBI</code> package </small></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(DBI)
+<span class="kw">dbListTables</span>(sc)
+<span class="kw">dbGetQuery</span>(sc, <span class="st">&quot;use database_name&quot;</span>)
+data_tbl3 &lt;-<span class="st"> </span><span class="kw">dbGetQuery</span>(sc, <span class="st">&quot;SELECT * from table_name&quot;</span>)
+<span class="kw">dbListFields</span>(sc, data_tbl3)
+<span class="kw">dbListTables</span>(sc)</code></pre></div>
+</section></section>
+<section><section id="use-case-extending-sparklyr-to-compute-cost-for-k-means" class="titleslide slide level1"><h1>Use Case: <br> <a href="http://r-addict.com/2016/08/25/Extending-Sparklyr.html">Extending sparklyr to Compute Cost for K-means</a></h1></section><section id="preparing-spark-ml-algorithm" class="slide level2">
+<h1>Preparing Spark ML Algorithm</h1>
+<p><small> The basic example on how sparklyr invokes Scala code from Spark ML will be presented on K-means algorithm. If you check the code of <code>sparklyr::ml_kmeans()</code> function you will see that for input <code>tbl_spark</code> object, named x and character vector containing features’ names (<code>featuers</code>) </small></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">envir &lt;-<span class="st"> </span><span class="kw">new.env</span>(<span class="dt">parent =</span> <span class="kw">emptyenv</span>())
+df    &lt;-<span class="st"> </span><span class="kw">spark_dataframe</span>(x)
+sc    &lt;-<span class="st"> </span><span class="kw">spark_connection</span>(df)
+df    &lt;-<span class="st"> </span><span class="kw">ml_prepare_features</span>(df, features)
+tdf   &lt;-<span class="st"> </span><span class="kw">ml_prepare_dataframe</span>(df, features, <span class="dt">ml.options =</span> ml.options, <span class="dt">envir =</span> envir)</code></pre></div>
+<p><small> sparklyr ensures that you have proper connection to spark data frame and prepares features in convenient form and naming convention. At the end it prepares a Spark DataFrame for Spark ML routines.</p>
+<p>You can construct a simple model calling a Spark ML class like this </small></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">envir$model &lt;-<span class="st"> &quot;org.apache.spark.ml.clustering.KMeans&quot;</span>
+kmeans      &lt;-<span class="st"> </span><span class="kw">invoke_new</span>(sc, envir$model)</code></pre></div>
+</section><section id="invoking-spark-ml-algorithm" class="slide level2">
+<h1>Invoking Spark ML Algorithm</h1>
+<p>…which invokes new object of class KMeans on which we can invoke parameters setters to change default parameters.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">model &lt;-<span class="st"> </span>kmeans %&gt;%
+<span class="st">    </span><span class="kw">invoke</span>(<span class="st">&quot;setK&quot;</span>, centers) %&gt;%
+<span class="st">    </span><span class="kw">invoke</span>(<span class="st">&quot;setMaxIter&quot;</span>, iter.max) %&gt;%
+<span class="st">    </span><span class="kw">invoke</span>(<span class="st">&quot;setTol&quot;</span>, tolerance) %&gt;%
+<span class="st">    </span><span class="kw">invoke</span>(<span class="st">&quot;setFeaturesCol&quot;</span>, envir$features)
+<span class="co"># features where set in ml_prepare_dataframe</span></code></pre></div>
+</section><section id="fitting-spark-ml-algorithm" class="slide level2">
+<h1>Fitting Spark ML Algorithm</h1>
+<p><small> For an existing object of <code>KMeans</code> class we can invoke its method called <code>fit</code> that is responsible <br>for starting the K-means clustering algorithm </small></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit &lt;-<span class="st"> </span>model %&gt;%<span class="st"> </span><span class="kw">invoke</span>(<span class="st">&quot;fit&quot;</span>, tdf)
+<span class="co"># reminder: </span>
+<span class="co"># tdf   &lt;- ml_prepare_dataframe(df, features, ml.options = ml.options, envir = envir)</span></code></pre></div>
+<p><small> which returns new object on which we can compute/extract, e.g centers of outputted clustering </small></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">kmmCenters &lt;-<span class="st"> </span><span class="kw">invoke</span>(fit, <span class="st">&quot;clusterCenters&quot;</span>)</code></pre></div>
+<p><small> or the Within Set Sum of Squared Errors (called Cost) </small></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">kmmCost &lt;-<span class="st"> </span><span class="kw">invoke</span>(fit, <span class="st">&quot;computeCost&quot;</span>, tdf)</code></pre></div>
+<p><small> which is my small contribution <a href="https://github.com/rstudio/sparklyr/pull/173">#173</a> </small></p>
+</section><section id="or-use-spaklyrml_kmeans" class="slide level2">
+<h1>or use spaklyr::ml_kmeans</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris_tbl %&gt;%
+<span class="st">   </span><span class="kw">select</span>(Petal_Width, Petal_Length) %&gt;%
+<span class="st">   </span><span class="kw">ml_kmeans</span>(<span class="dt">centers =</span> <span class="dv">3</span>, <span class="dt">compute.cost =</span> <span class="ot">TRUE</span>) %&gt;%
+<span class="st">   </span><span class="kw">print</span>()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">K-means clustering with <span class="dv">3</span> clusters
+
+Cluster centers:
+<span class="st">  </span>Petal_Width Petal_Length
+<span class="dv">1</span>    <span class="fl">1.359259</span>     <span class="fl">4.292593</span>
+<span class="dv">2</span>    <span class="fl">2.047826</span>     <span class="fl">5.626087</span>
+<span class="dv">3</span>    <span class="fl">0.246000</span>     <span class="fl">1.462000</span>
+
+Within Set Sum of Squared Errors =<span class="st">  </span><span class="fl">31.41289</span></code></pre></div>
+<p><small></p>
+<p>All that can be better understood if we’ll have a look on <a href="https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.ml.clustering.KMeans">Spark ML documentation for KMeans</a> . Be carefull <a href="https://github.com/rstudio/sparklyr/issues/178#issuecomment-240472368">not to confuse with Spark MLlib</a> where methods and parameters have different names than those in Spark ML.</p>
+<p>The documentation enabled me to provide simple update for <code>ml_kmeans()</code> (<a href="https://github.com/rstudio/sparklyr/pull/179">#179</a>) so that we can specify <code>tol</code> (tolerance) parameter in <code>ml_kmeans()</code> to support tolerance of convergence.</p>
+<p></small></p>
+</section></section>
+<section><section id="questions" class="titleslide slide level1"><h1>Questions?</h1></section><section id="thank-you-for-your-attention" class="slide level2">
+<h1>Thank you for your attention</h1>
+<p>If you liked the presentation, then join next Warsaw R Enthusiasts Meetup <a href="https://www.meetup.com/Spotkania-Entuzjastow-R-Warsaw-R-Users-Group-Meetup/events/239276697/">SER XXVI - Wizualizacje Modeli Statystycznych</a> (Thursday, May 25, 2017).</p>
+</section><section id="what-is-a-spark-dataframe" class="slide level2">
+<h1>What is a Spark DataFrame</h1>
+<p>Check the documentation: <a href="http://spark.apache.org/docs/latest/sql-programming-guide.html#datasets-and-dataframes">Datasets and DataFrames</a></p>
+</section></section>
     </div>
   </div>
 
