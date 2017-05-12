@@ -266,7 +266,7 @@ response <- "response_name"
 # dplyr_characters <- function(attr, response) {
 df1 <- df %>%
     select_("some_name", attr, response) %>%
-    mutate_(.dots = setNames(list(attr, attr)) %>%
+    mutate_(.dots = setNames(list(paste0("as.factor(",attr, ")"), attr)) %>%
     rename_(.dots = setNames(response, "values"))
 # return(df1)
 # }

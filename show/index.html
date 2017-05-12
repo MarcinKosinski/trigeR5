@@ -698,7 +698,7 @@ response &lt;-<span class="st"> &quot;response_name&quot;</span>
 <span class="co"># dplyr_characters &lt;- function(attr, response) {</span>
 df1 &lt;-<span class="st"> </span>df %&gt;%
 <span class="st">    </span><span class="kw">select_</span>(<span class="st">&quot;some_name&quot;</span>, attr, response) %&gt;%
-<span class="st">    </span><span class="kw">mutate_</span>(<span class="dt">.dots =</span> <span class="kw">setNames</span>(<span class="kw">list</span>(attr, attr)) %&gt;%
+<span class="st">    </span><span class="kw">mutate_</span>(<span class="dt">.dots =</span> <span class="kw">setNames</span>(<span class="kw">list</span>(<span class="kw">paste0</span>(<span class="st">&quot;as.factor(&quot;</span>,attr, <span class="st">&quot;)&quot;</span>), attr)) %&gt;%
 <span class="st">    </span><span class="kw">rename_</span>(<span class="dt">.dots =</span> <span class="kw">setNames</span>(response, <span class="st">&quot;values&quot;</span>))
 <span class="co"># return(df1)</span>
 <span class="co"># }</span></code></pre></div>
