@@ -1,8 +1,11 @@
 #### dicts ####
-# https://github.com/morfologik/
+# https://github.com/morfologik/polimorfologik/releases
 library(data.table)
-polish_lematization <- fread('../dicts/polimorfologik-2.1.txt', data.table = FALSE, encoding = 'UTF-8')
-polish_stopwords <- strsplit(readLines('../dicts/polish_stopwords.txt', encoding = 'UTF-8'), ", ")[[1]]
+library(dplyr)
+library(magrittr)
+library(RSQLite)
+polish_lematization <- fread('dicts/polimorfologik-2.1.txt', data.table = FALSE, encoding = 'UTF-8')
+polish_stopwords <- strsplit(readLines('dicts/polish_stopwords.txt', encoding = 'UTF-8'), ", ")[[1]]
 
 lower_lema <- polish_lematization %>%
   set_colnames(c('to', 'from', 'no_need')) %>%
@@ -20,7 +23,7 @@ lower_lema_split <-
             replace = TRUE))
 
 #### remove previous data ####
-db <- dbConnect(drv = SQLite(), dbname = "../data/wp.db")
+db <- dbConnect(drv = SQLite(), dbname = "data/wp.db")
 
 dbListTables(db) %>%
   grep('_lematized|stem', . , value = TRUE) %>%
@@ -30,11 +33,14 @@ dbListTables(db) %>%
 
 #### stem ####
 library(tm)
+library(pbapply)
+library(stringi)
 dbListTables(db) %>%
   pbsapply(function(table){
     text = 
       dbGetQuery(db, paste0('SELECT bodies FROM ',  table)) %>%
       use_series(bodies) %>%
+      lapply(iconv, "UTF-8", "ASCII", sub="") %>%
       lapply(tolower) %>%
       lapply(tm::removeWords, c("\"", "ul.", "godz.", polish_stopwords, 1:2000)) %>% 
       stri_extract_all_words()
