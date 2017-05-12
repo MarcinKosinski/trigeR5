@@ -1,0 +1,57 @@
+---
+title: "<br><small> [sparklyr](https://github.com/rstudio/sparklyr): R interface to [Apache Spark](http://spark.apache.org/) machine learning algorithms with [dplyr](https://github.com/tidyverse/dplyr) back-end </small>"
+subtitle: "<small> <br>[Marcin Kosiński](http://r-addict.com/About.html) </small>"
+author: "<small><a href='https://r-addict.com'><i class='fa fa-comment'></i></a>&nbsp;&nbsp;<a href='https://stackoverflow.com/users/3857701'><i class='fa fa-stack-overflow'></i></a>&nbsp;&nbsp;<a href='https://github.com/MarcinKosinski'><i class='fa fa-github'></i></a>&nbsp;&nbsp;<a href='mailto:m.p.kosinski@gmail.com'><i class='fa fa-envelope-o'></i></a>&nbsp;&nbsp;</small><br>"
+date: April 11, 2017 <br> <a href="https://www.meetup.com/Data-Science-Warsaw/events/238737897/">Data Science Warsaw 25</a>
+output:
+  revealjs::revealjs_presentation:
+    theme: night
+    highlight: pygments
+    self_contained: false
+    center: true
+    reveal_options:
+      slideNumber: true
+---
+
+```{r, include=FALSE}
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+library(knitr)
+opts_chunk$set(
+	comment = "",
+	fig.width = 12, 
+	message = FALSE,
+	warning = FALSE,
+	tidy.opts = list(
+		keep.blank.line = TRUE,	
+		width.cutoff = 150
+		),
+	options(width = 200),
+	eval = TRUE
+)
+# Sys.setenv(JAVA_HOME='/usr/lib/jvm/java-7-openjdk-amd64')
+```
+
+# About me
+
+## About me
+
+<a href='https://whyr.pl/'><img src='whyR.jpg' width='200px' height='200px'></a>
+<a href='https://wser.pl/'><img src='wser.jpg' width='400px' height='200px'></a>
+<a href='https://r-addict.com/'><img src='avatar.jpg' width='200px' height='200px'></a>
+
+[whyr.pl](https://whyr.pl/) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [wser.pl](https://wser.pl/) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [r-addict.com](https://r-addict.com/)
+
+
+# sparklyr = integRation
+
+## sparklyr = integRation
+
+- [Apache Spark](http://spark.apache.org/)
+- [R (data science) language](https://cran.r-project.org/) 
+- [sparkapi](https://github.com/rstudio/sparkapi) R package
+- [dplyr](https://github.com/tidyverse/dplyr) R package
+- [Spark MLlib](http://spark.apache.org/mllib/) (machine learning library)
+- [sparklyr](http://spark.rstudio.com): dplyr back-end for Spark MLlib executed from R via sparkapi
+
+# Thank you for your attention Questions?
+
