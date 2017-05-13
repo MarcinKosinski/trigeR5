@@ -1,0 +1,1 @@
+print("tu bedzie kod na warsztatach ze sparklyr")
